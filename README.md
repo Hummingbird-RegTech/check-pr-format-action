@@ -29,7 +29,7 @@ None.
 
 ```
 - name: Foo Check
-  uses: ./.github/actions/soc-product-board-check
+  uses: Hummingbird-RegTech/check-pr-body-action@v1
   with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
     body_pattern: '(foo|FOO)+'
