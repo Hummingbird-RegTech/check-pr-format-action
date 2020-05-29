@@ -1,0 +1,18 @@
+name: Pull request body content check.
+description: Block merging unless the Pull Request body contains the configured pattern.
+inputs:
+  github_token:
+    description: 'Github OAuth2 token'
+    required: true
+  body_pattern:
+    description: 'Regular expression pattern to check for in the Pull Request body.'
+    required: true
+  success_message:
+    description: 'Message to emit on success.'
+    required: true
+  failure_message:
+    description: 'Message to emit on failure.'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
