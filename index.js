@@ -16,7 +16,8 @@ async function run() {
   const githubToken = core.getInput('github_token')
   const successMessage = core.getInput('success_message')
   const failureMessage = core.getInput('failure_message')
-  const bodyPattern = new RegExp(core.getInput('body_pattern'))
+  const bodyPatternString = core.getInput('body_pattern')
+  const titlePatternString = core.getInput('title_pattern')
   const octokit = new github.GitHub(githubToken)
 
   const { data: pullRequest } = await octokit.pulls.get({
@@ -25,10 +26,19 @@ async function run() {
     pull_number: prNumber,
   })
 
-  const result = bodyPattern.exec(pullRequest.body)
-  if (result) {
-    // If PB ever opens an API, we can get the feature id:
-    // const { featureId } = result
+  const bodyMatch = true
+  const titleMatch = true
+  if (bodyPatternString && bodyPatternString.length > 0) {
+    const bodyPattern = new RegExp(bodyPatternString)
+    bodyMatch = !!bodyPattern.exec(pullRequest.body)
+  }
+
+  if (titlePatternString && titlePatternString.length > 0) {
+    const bodyPattern = new RegExp(bodyPatternString)
+    titleMatch = !!bodyPattern.exec(pullRequest.title)
+  }
+
+  if (titleMatch && bodyMatch) {
     core.setOutput('Success', successMessage);
   } else {
     core.setFailed(failureMessage)

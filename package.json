@@ -1,7 +1,7 @@
 {
-  "name": "soc-product-board-check",
+  "name": "check-pr-action",
   "version": "1.0.0",
-  "description": "This action posts a comment to a PR when the PR is closed without a  trello ticket linked.",
+  "description": "This action checks the PR body and title against regular expression patterns.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
