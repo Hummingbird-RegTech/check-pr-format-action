@@ -26,8 +26,8 @@ async function run() {
     pull_number: prNumber,
   })
 
-  const bodyMatch = true
-  const titleMatch = true
+  let bodyMatch = true
+  let titleMatch = true
   if (bodyPatternString && bodyPatternString.length > 0) {
     const bodyPattern = new RegExp(bodyPatternString)
     bodyMatch = !!bodyPattern.exec(pullRequest.body)
