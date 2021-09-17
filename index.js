@@ -34,8 +34,8 @@ async function run() {
   }
 
   if (titlePatternString && titlePatternString.length > 0) {
-    const bodyPattern = new RegExp(bodyPatternString)
-    titleMatch = !!bodyPattern.exec(pullRequest.title)
+    const titlePattern = new RegExp(titlePatternString)
+    titleMatch = !!titlePattern.exec(pullRequest.title)
   }
 
   if (titleMatch && bodyMatch) {
