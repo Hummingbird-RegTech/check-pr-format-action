@@ -20,7 +20,7 @@ async function run() {
   const titlePatternString = core.getInput('title_pattern')
   const octokit = github.getOctokit(githubToken)
 
-  const { data: pullRequest } = await octokit.pulls.get({
+  const { data: pullRequest } = await octokit.rest.pulls.get({
     owner: githubOwner,
     repo: githubRepo,
     pull_number: prNumber,
