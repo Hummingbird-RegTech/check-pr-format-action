@@ -1,6 +1,6 @@
 {
   "name": "check-pr-action",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "This action checks the PR body and title against regular expression patterns.",
   "main": "index.js",
   "scripts": {
