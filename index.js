@@ -18,9 +18,9 @@ async function run() {
   const failureMessage = core.getInput('failure_message')
   const bodyPatternString = core.getInput('body_pattern')
   const titlePatternString = core.getInput('title_pattern')
-  const octokit = new github.GitHub(githubToken)
+  const octokit = github.getOctokit(githubToken)
 
-  const { data: pullRequest } = await octokit.pulls.get({
+  const { data: pullRequest } = await octokit.rest.pulls.get({
     owner: githubOwner,
     repo: githubRepo,
     pull_number: prNumber,
